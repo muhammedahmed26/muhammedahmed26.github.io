@@ -30,7 +30,7 @@
       padding:6px 10px;
     }
 
-    /* 🌟 CLEAN HERO (NO ANIMATED ICONS) */
+    /* 🌟 CLEAN HERO */
     .hero{
       text-align:center;
       padding:110px 15px;
@@ -39,7 +39,7 @@
       background: radial-gradient(circle at center, #111 0%, #000 60%, #000 100%);
     }
 
-    /* ONLY CLOCK RING (STATIC, NOT ANIMATED) */
+    /* ONLY CLOCK RING */
     .clock-bg{
       position:absolute;
       width:320px;
@@ -51,10 +51,20 @@
       transform:translate(-50%,-50%);
     }
 
+    /* ✨ FLOATING + GOLD GLOW TEXT */
     .hero h1{
       font-size:34px;
       margin:0;
       position:relative;
+      animation: floatText 3s ease-in-out infinite;
+      color:white;
+      text-shadow:0 0 10px rgba(255,215,0,0.25);
+    }
+
+    @keyframes floatText{
+      0%{transform:translateY(0);}
+      50%{transform:translateY(-6px);}
+      100%{transform:translateY(0);}
     }
 
     .hero p{
