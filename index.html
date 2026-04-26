@@ -17,38 +17,44 @@
       background:#111;
       position:sticky;
       top:0;
+      z-index:1000;
     }
 
     nav a{
       color:gold;
-      margin:8px;
+      margin:6px;
       text-decoration:none;
       font-weight:bold;
       display:inline-block;
+      padding:6px 10px;
     }
 
     .hero{
       text-align:center;
-      padding:50px 15px;
+      padding:60px 15px;
       background:linear-gradient(to bottom, #111, #000);
     }
 
     .hero h1{
-      font-size:32px;
+      font-size:34px;
+      margin:0;
     }
 
     .hero p{
       color:#bbb;
       font-size:14px;
+      margin:10px 0 20px;
     }
 
     .btn{
       background:gold;
       color:black;
-      padding:12px 18px;
+      padding:12px 20px;
       border:none;
       font-weight:bold;
       border-radius:5px;
+      text-decoration:none;
+      display:inline-block;
     }
 
     .grid{
@@ -82,7 +88,7 @@
       padding:10px;
     }
 
-    /* 📱 MOBILE */
+    /* 📱 MOBILE FIX */
     @media (max-width:768px){
       .hero h1{font-size:24px;}
       .grid{flex-direction:column;align-items:center;}
@@ -109,7 +115,7 @@
 <div class="hero">
   <h1>Luxury Watches for Everyone</h1>
   <p>Premium • Affordable • Stylish</p>
-  <a href="luxury.html"><button class="btn">Shop Now</button></a>
+  <a href="luxury.html" class="btn">Shop Now</a>
 </div>
 
 <div class="grid">
