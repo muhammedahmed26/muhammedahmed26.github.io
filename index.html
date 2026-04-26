@@ -30,72 +30,77 @@
       padding:6px 10px;
     }
 
-    /* 🌟 HERO SLIDESHOW */
+    /* 🌟 CLEAN HERO (NO SLIDESHOW) */
     .hero{
-      position:relative;
-      height:65vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
       text-align:center;
-      overflow:hidden;
-    }
-
-    .slide{
-      position:absolute;
-      width:100%;
-      height:100%;
-      background-size:cover;
-      background-position:center;
-      background-repeat:no-repeat;
-      opacity:0;
-      animation:slideShow 12s infinite;
-      transform:scale(1.05);
-    }
-
-    .slide:nth-child(1){background-image:url("lux1.jpg"); animation-delay:0s;}
-    .slide:nth-child(2){background-image:url("sport1.jpg"); animation-delay:4s;}
-    .slide:nth-child(3){background-image:url("fashion1.jpg"); animation-delay:8s;}
-
-    /* 🔥 smooth fade slideshow */
-    @keyframes slideShow{
-      0%{opacity:0;}
-      10%{opacity:1;}
-      30%{opacity:1;}
-      40%{opacity:0;}
-      100%{opacity:0;}
-    }
-
-    /* 🌑 overlay fixes pixel look */
-    .hero::after{
-      content:"";
-      position:absolute;
-      width:100%;
-      height:100%;
-      background:rgba(0,0,0,0.45);
-      z-index:1;
-    }
-
-    .hero-text{
+      padding:110px 15px;
       position:relative;
-      z-index:2;
-      animation: glow 2s infinite alternate;
+      overflow:hidden;
+      background: radial-gradient(circle at center, #111 0%, #000 60%, #000 100%);
     }
 
-    @keyframes glow{
-      from{text-shadow:0 0 10px gold;}
-      to{text-shadow:0 0 25px gold;}
+    /* floating watch */
+    .hero::before{
+      content:"⌚";
+      position:absolute;
+      font-size:80px;
+      opacity:0.08;
+      top:20%;
+      left:-100px;
+      animation: float1 12s linear infinite;
+    }
+
+    /* floating gear */
+    .hero::after{
+      content:"⚙️";
+      position:absolute;
+      font-size:90px;
+      opacity:0.06;
+      bottom:10%;
+      right:-120px;
+      animation: float2 10s linear infinite;
+    }
+
+    /* ticking circle */
+    .clock-bg{
+      position:absolute;
+      width:320px;
+      height:320px;
+      border:2px solid rgba(255,215,0,0.08);
+      border-radius:50%;
+      top:50%;
+      left:50%;
+      transform:translate(-50%,-50%);
+      animation: tick 1s infinite steps(2);
+    }
+
+    @keyframes tick{
+      0% {transform:translate(-50%,-50%) scale(1);}
+      50% {transform:translate(-50%,-50%) scale(1.03);}
+      100% {transform:translate(-50%,-50%) scale(1);}
+    }
+
+    @keyframes float1{
+      0% {transform:translateX(0) rotate(0deg);}
+      100% {transform:translateX(120vw) rotate(360deg);}
+    }
+
+    @keyframes float2{
+      0% {transform:translateX(0) rotate(0deg);}
+      100% {transform:translateX(-120vw) rotate(-360deg);}
     }
 
     .hero h1{
       font-size:34px;
       margin:0;
+      position:relative;
     }
 
     .hero p{
-      color:#ccc;
+      color:#bbb;
       font-size:14px;
       margin:10px 0 20px;
+      position:relative;
     }
 
     .btn{
@@ -107,9 +112,10 @@
       border-radius:5px;
       text-decoration:none;
       display:inline-block;
+      position:relative;
     }
 
-    /* 🌟 3D FLOATING CARDS */
+    /* 🌟 CARDS */
     .grid{
       display:flex;
       justify-content:center;
@@ -197,18 +203,14 @@
   </nav>
 </header>
 
-<!-- 🌟 HERO -->
+<!-- 🌟 HERO (NO SLIDESHOW) -->
 <div class="hero">
 
-  <div class="slide"></div>
-  <div class="slide"></div>
-  <div class="slide"></div>
+  <div class="clock-bg"></div>
 
-  <div class="hero-text">
-    <h1>Luxury Watches for Everyone</h1>
-    <p>Premium • Stylish • Timeless</p>
-    <a href="luxury.html" class="btn">Shop Now</a>
-  </div>
+  <h1>Luxury Watches for Everyone</h1>
+  <p>Premium • Stylish • Timeless</p>
+  <a href="luxury.html" class="btn">Shop Now</a>
 
 </div>
 
