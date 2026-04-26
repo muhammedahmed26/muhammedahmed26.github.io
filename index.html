@@ -9,7 +9,7 @@
       font-family:Arial;
       background:#0f0f0f;
       color:white;
-      overflow-x:hidden;
+      overflow:hidden;
     }
 
     header{
@@ -18,7 +18,7 @@
       background:#111;
       position:sticky;
       top:0;
-      z-index:1000;
+      z-index:10;
     }
 
     nav a{
@@ -30,140 +30,43 @@
       padding:6px 10px;
     }
 
-    /* 🌟 CLEAN HERO */
+    /* 🌟 HERO */
     .hero{
-      text-align:center;
-      padding:120px 15px;
+      height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex-direction:column;
       position:relative;
-      overflow:hidden;
-      background: radial-gradient(circle at center, #111 0%, #000 70%, #000 100%);
+      text-align:center;
+      background:#000;
     }
 
-    /* 🕒 LARGE FAINT CLOCK BACKGROUND */
+    /* 🕒 SINGLE FAINT CLOCK BACKGROUND (NOT SECOND CLOCK) */
     .hero::before{
-      content:"12:00";
-      position:absolute;
-      font-size:220px;
-      font-weight:bold;
-      color:rgba(255,215,0,0.05);
-      top:50%;
-      left:50%;
-      transform:translate(-50%,-50%);
-      letter-spacing:10px;
-      user-select:none;
-    }
-
-    .hero::after{
       content:"";
       position:absolute;
-      width:420px;
-      height:420px;
-      border:2px solid rgba(255,215,0,0.06);
+      width:380px;
+      height:380px;
       border-radius:50%;
-      top:50%;
-      left:50%;
-      transform:translate(-50%,-50%);
+      border:2px solid rgba(255,215,0,0.06);
+      box-shadow:0 0 80px rgba(255,215,0,0.03);
     }
 
-    .digital-clock{
-      position:relative;
-      font-size:42px;
+    /* ⏰ ONLY LIVE CLOCK */
+    .clock{
+      font-size:70px;
       font-weight:bold;
       color:gold;
       letter-spacing:3px;
-      margin-top:15px;
-      text-shadow:0 0 18px rgba(255,215,0,0.5);
+      text-shadow:0 0 20px rgba(255,215,0,0.5);
+      z-index:2;
     }
 
-    .hero h1{
-      font-size:34px;
-      margin:0;
-      position:relative;
-    }
-
-    .hero p{
+    .tag{
+      margin-top:10px;
       color:#bbb;
-      font-size:14px;
-      margin:10px 0 20px;
-      position:relative;
-    }
-
-    .btn{
-      background:gold;
-      color:black;
-      padding:12px 20px;
-      border:none;
-      font-weight:bold;
-      border-radius:5px;
-      text-decoration:none;
-      display:inline-block;
-      position:relative;
-    }
-
-    /* 🌟 CARDS */
-    .grid{
-      display:flex;
-      justify-content:center;
-      flex-wrap:wrap;
-      gap:25px;
-      padding:40px 15px;
-    }
-
-    .card{
-      width:260px;
-      background:linear-gradient(145deg,#1c1c1c,#0f0f0f);
-      border-radius:15px;
-      overflow:hidden;
-      transition:0.4s;
-      box-shadow:0 10px 30px rgba(0,0,0,0.6);
-    }
-
-    .card:hover{
-      transform:translateY(-10px);
-      box-shadow:0 20px 50px rgba(255,215,0,0.15);
-    }
-
-    .card img{
-      width:100%;
-      height:190px;
-      object-fit:cover;
-    }
-
-    .card-content{
-      padding:15px;
-      text-align:center;
-    }
-
-    .card h3{
-      color:gold;
-      margin:5px 0;
-    }
-
-    .card p{
-      color:#bbb;
-      font-size:13px;
-    }
-
-    .card-btn{
-      display:inline-block;
-      padding:8px 14px;
-      background:gold;
-      color:black;
-      text-decoration:none;
-      font-weight:bold;
-      border-radius:5px;
-      margin-top:8px;
-    }
-
-    /* 📱 MOBILE */
-    @media (max-width:768px){
-      .hero h1{font-size:24px;}
-      .grid{flex-direction:column;align-items:center;}
-      .card{width:90%;}
-      nav a{display:block;margin:5px 0;}
-      .digital-clock{font-size:30px;}
-      .hero::before{font-size:140px;}
-      .hero::after{width:300px;height:300px;}
+      z-index:2;
     }
 
   </style>
@@ -186,49 +89,14 @@
 <!-- 🌟 HERO -->
 <div class="hero">
 
-  <h1>Luxury Watches for Everyone</h1>
-  <p>Premium • Stylish • Timeless</p>
+  <!-- ONLY LIVE CLOCK -->
+  <div class="clock" id="clock">00:00:00</div>
 
-  <!-- ⏰ LIVE CLOCK -->
-  <div class="digital-clock" id="clock">00:00:00</div>
-
-  <a href="luxury.html" class="btn">Shop Now</a>
+  <div class="tag">Luxury Time Display</div>
 
 </div>
 
-<!-- 🌟 CARDS -->
-<div class="grid">
-
-  <div class="card">
-    <img src="lux1.jpg">
-    <div class="card-content">
-      <h3>Luxury</h3>
-      <p>Elite premium watch collection</p>
-      <a class="card-btn" href="luxury.html">Explore</a>
-    </div>
-  </div>
-
-  <div class="card">
-    <img src="sport1.jpg">
-    <div class="card-content">
-      <h3>Sports</h3>
-      <p>Performance & durability watches</p>
-      <a class="card-btn" href="sports.html">Explore</a>
-    </div>
-  </div>
-
-  <div class="card">
-    <img src="fashion1.jpg">
-    <div class="card-content">
-      <h3>Fashion</h3>
-      <p>Modern stylish everyday watches</p>
-      <a class="card-btn" href="fashion.html">Explore</a>
-    </div>
-  </div>
-
-</div>
-
-<!-- ⏰ CLOCK SCRIPT -->
+<!-- ⏰ SCRIPT -->
 <script>
 function updateClock(){
   const now = new Date();
@@ -241,7 +109,8 @@ function updateClock(){
   m = m < 10 ? "0" + m : m;
   s = s < 10 ? "0" + s : s;
 
-  document.getElementById("clock").innerText = h + ":" + m + ":" + s;
+  document.getElementById("clock").innerText =
+    h + ":" + m + ":" + s;
 }
 
 setInterval(updateClock, 1000);
