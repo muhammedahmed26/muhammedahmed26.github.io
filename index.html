@@ -9,7 +9,7 @@
       font-family:Arial;
       background:#0f0f0f;
       color:white;
-      overflow:hidden;
+      overflow-x:hidden;
     }
 
     header{
@@ -18,7 +18,7 @@
       background:#111;
       position:sticky;
       top:0;
-      z-index:10;
+      z-index:1000;
     }
 
     nav a{
@@ -30,82 +30,160 @@
       padding:6px 10px;
     }
 
-    /* 🌟 HERO */
+    /* 🌟 CLEAN HERO (NO SLIDESHOW) */
     .hero{
-      height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      flex-direction:column;
-      position:relative;
       text-align:center;
-      background:#000;
-    }
-
-    /* 🕒 BIG FAINT BACKGROUND CLOCK */
-    .hero::before{
-      content:"";
-      position:absolute;
-      width:420px;
-      height:420px;
-      border-radius:50%;
-      border:2px solid rgba(255,215,0,0.05);
-      box-shadow:0 0 100px rgba(255,215,0,0.03);
-    }
-
-    /* ⏰ LIVE CLOCK */
-    .clock{
-      font-size:70px;
-      font-weight:bold;
-      color:gold;
-      letter-spacing:3px;
-      text-shadow:0 0 20px rgba(255,215,0,0.5);
-      z-index:2;
-    }
-
-    /* 🌟 FLOATING WATCH CARDS */
-    .float-container{
-      position:absolute;
-      width:100%;
-      height:100%;
-      pointer-events:none;
-    }
-
-    .watch{
-      position:absolute;
-      width:120px;
-      height:160px;
-      background:#1c1c1c;
-      border-radius:12px;
+      padding:110px 15px;
+      position:relative;
       overflow:hidden;
-      box-shadow:0 10px 30px rgba(0,0,0,0.6);
-      animation: float 6s ease-in-out infinite;
+      background: radial-gradient(circle at center, #111 0%, #000 60%, #000 100%);
     }
 
-    .watch img{
+    /* floating watch */
+    .hero::before{
+      content:"⌚";
+      position:absolute;
+      font-size:80px;
+      opacity:0.08;
+      top:20%;
+      left:-100px;
+      animation: float1 12s linear infinite;
+    }
+
+    /* floating gear */
+    .hero::after{
+      content:"⚙️";
+      position:absolute;
+      font-size:90px;
+      opacity:0.06;
+      bottom:10%;
+      right:-120px;
+      animation: float2 10s linear infinite;
+    }
+
+    /* ticking circle */
+    .clock-bg{
+      position:absolute;
+      width:320px;
+      height:320px;
+      border:2px solid rgba(255,215,0,0.08);
+      border-radius:50%;
+      top:50%;
+      left:50%;
+      transform:translate(-50%,-50%);
+      animation: tick 1s infinite steps(2);
+    }
+
+    @keyframes tick{
+      0% {transform:translate(-50%,-50%) scale(1);}
+      50% {transform:translate(-50%,-50%) scale(1.03);}
+      100% {transform:translate(-50%,-50%) scale(1);}
+    }
+
+    @keyframes float1{
+      0% {transform:translateX(0) rotate(0deg);}
+      100% {transform:translateX(120vw) rotate(360deg);}
+    }
+
+    @keyframes float2{
+      0% {transform:translateX(0) rotate(0deg);}
+      100% {transform:translateX(-120vw) rotate(-360deg);}
+    }
+
+    .hero h1{
+      font-size:34px;
+      margin:0;
+      position:relative;
+    }
+
+    .hero p{
+      color:#bbb;
+      font-size:14px;
+      margin:10px 0 20px;
+      position:relative;
+    }
+
+    .btn{
+      background:gold;
+      color:black;
+      padding:12px 20px;
+      border:none;
+      font-weight:bold;
+      border-radius:5px;
+      text-decoration:none;
+      display:inline-block;
+      position:relative;
+    }
+
+    /* 🌟 CARDS */
+    .grid{
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:25px;
+      padding:40px 15px;
+      perspective:1000px;
+    }
+
+    .card{
+      width:260px;
+      background:linear-gradient(145deg,#1c1c1c,#0f0f0f);
+      border-radius:15px;
+      overflow:hidden;
+      transition:0.5s;
+      box-shadow:0 10px 30px rgba(0,0,0,0.6);
+      animation: floatCard 4s ease-in-out infinite;
+    }
+
+    .card:hover{
+      transform:translateY(-15px) rotateY(8deg);
+      box-shadow:0 20px 50px rgba(255,215,0,0.2);
+    }
+
+    @keyframes floatCard{
+      0%{transform:translateY(0px);}
+      50%{transform:translateY(-10px);}
+      100%{transform:translateY(0px);}
+    }
+
+    .card img{
       width:100%;
-      height:120px;
+      height:190px;
       object-fit:cover;
     }
 
-    .watch p{
-      margin:0;
+    .card-content{
+      padding:15px;
       text-align:center;
-      font-size:12px;
-      padding:5px;
-      color:gold;
     }
 
-    /* positions */
-    .w1{top:15%;left:10%; animation-delay:0s;}
-    .w2{top:65%;left:15%; animation-delay:1s;}
-    .w3{top:20%;right:12%; animation-delay:2s;}
-    .w4{top:60%;right:10%; animation-delay:3s;}
+    .card h3{
+      color:gold;
+      margin:5px 0;
+    }
 
-    @keyframes float{
-      0%{transform:translateY(0px);}
-      50%{transform:translateY(-20px);}
-      100%{transform:translateY(0px);}
+    .card p{
+      color:#bbb;
+      font-size:13px;
+    }
+
+    .card-btn{
+      display:inline-block;
+      padding:8px 14px;
+      background:gold;
+      color:black;
+      text-decoration:none;
+      font-weight:bold;
+      border-radius:5px;
+      margin-top:8px;
+    }
+
+    /* 📱 MOBILE */
+    @media (max-width:768px){
+      .hero h1{font-size:24px;}
+      .grid{flex-direction:column;align-items:center;}
+      .card{width:90%;}
+      nav a{display:block;margin:5px 0;}
     }
 
   </style>
@@ -125,55 +203,48 @@
   </nav>
 </header>
 
+<!-- 🌟 HERO (NO SLIDESHOW) -->
 <div class="hero">
 
-  <!-- floating watches -->
-  <div class="float-container">
-    <div class="watch w1">
-      <img src="lux1.jpg">
-      <p>Luxury</p>
-    </div>
+  <div class="clock-bg"></div>
 
-    <div class="watch w2">
-      <img src="sport1.jpg">
-      <p>Sports</p>
-    </div>
-
-    <div class="watch w3">
-      <img src="fashion1.jpg">
-      <p>Fashion</p>
-    </div>
-
-    <div class="watch w4">
-      <img src="lux2.jpg">
-      <p>Premium</p>
-    </div>
-  </div>
-
-  <!-- clock -->
-  <div class="clock" id="clock">00:00:00</div>
+  <h1>Luxury Watches for Everyone</h1>
+  <p>Premium • Stylish • Timeless</p>
+  <a href="luxury.html" class="btn">Shop Now</a>
 
 </div>
 
-<script>
-function updateClock(){
-  const now = new Date();
+<!-- 🌟 CARDS -->
+<div class="grid">
 
-  let h = now.getHours();
-  let m = now.getMinutes();
-  let s = now.getSeconds();
+  <div class="card">
+    <img src="lux1.jpg">
+    <div class="card-content">
+      <h3>Luxury</h3>
+      <p>Elite premium watch collection</p>
+      <a class="card-btn" href="luxury.html">Explore</a>
+    </div>
+  </div>
 
-  h = h < 10 ? "0" + h : h;
-  m = m < 10 ? "0" + m : m;
-  s = s < 10 ? "0" + s : s;
+  <div class="card">
+    <img src="sport1.jpg">
+    <div class="card-content">
+      <h3>Sports</h3>
+      <p>Performance & durability watches</p>
+      <a class="card-btn" href="sports.html">Explore</a>
+    </div>
+  </div>
 
-  document.getElementById("clock").innerText =
-    h + ":" + m + ":" + s;
-}
+  <div class="card">
+    <img src="fashion1.jpg">
+    <div class="card-content">
+      <h3>Fashion</h3>
+      <p>Modern stylish everyday watches</p>
+      <a class="card-btn" href="fashion.html">Explore</a>
+    </div>
+  </div>
 
-setInterval(updateClock,1000);
-updateClock();
-</script>
+</div>
 
 </body>
-</html>
+</html> 
