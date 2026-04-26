@@ -30,7 +30,7 @@
       padding:6px 10px;
     }
 
-    /* 🌟 CLEAN HERO (NO SLIDESHOW) */
+    /* 🌟 CLEAN HERO */
     .hero{
       text-align:center;
       padding:110px 15px;
@@ -72,6 +72,17 @@
       left:50%;
       transform:translate(-50%,-50%);
       animation: tick 1s infinite steps(2);
+    }
+
+    /* ⏰ LIVE DIGITAL CLOCK */
+    .digital-clock{
+      position:relative;
+      font-size:42px;
+      font-weight:bold;
+      color:gold;
+      letter-spacing:2px;
+      margin-top:10px;
+      text-shadow:0 0 20px rgba(255,215,0,0.6);
     }
 
     @keyframes tick{
@@ -184,6 +195,7 @@
       .grid{flex-direction:column;align-items:center;}
       .card{width:90%;}
       nav a{display:block;margin:5px 0;}
+      .digital-clock{font-size:30px;}
     }
 
   </style>
@@ -203,13 +215,17 @@
   </nav>
 </header>
 
-<!-- 🌟 HERO (NO SLIDESHOW) -->
+<!-- 🌟 HERO -->
 <div class="hero">
 
   <div class="clock-bg"></div>
 
   <h1>Luxury Watches for Everyone</h1>
   <p>Premium • Stylish • Timeless</p>
+
+  <!-- ⏰ LIVE CLOCK -->
+  <div class="digital-clock" id="clock">00:00:00</div>
+
   <a href="luxury.html" class="btn">Shop Now</a>
 
 </div>
@@ -245,6 +261,26 @@
   </div>
 
 </div>
+
+<!-- ⏰ CLOCK SCRIPT -->
+<script>
+function updateClock(){
+  const now = new Date();
+
+  let h = now.getHours();
+  let m = now.getMinutes();
+  let s = now.getSeconds();
+
+  h = h < 10 ? "0" + h : h;
+  m = m < 10 ? "0" + m : m;
+  s = s < 10 ? "0" + s : s;
+
+  document.getElementById("clock").innerText = h + ":" + m + ":" + s;
+}
+
+setInterval(updateClock, 1000);
+updateClock();
+</script>
 
 </body>
 </html>
