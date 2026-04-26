@@ -29,10 +29,38 @@
       padding:6px 10px;
     }
 
+    /* 🔥 HERO WITH ANIMATION */
     .hero{
       text-align:center;
-      padding:60px 15px;
-      background:linear-gradient(to bottom, #111, #000);
+      padding:80px 15px;
+      color:white;
+      background: linear-gradient(-45deg, #111, #000, #1c1c1c, #000);
+      background-size: 400% 400%;
+      animation: bgMove 8s ease infinite;
+      position: relative;
+      overflow: hidden;
+    }
+
+    @keyframes bgMove {
+      0% {background-position:0% 50%;}
+      50% {background-position:100% 50%;}
+      100% {background-position:0% 50%;}
+    }
+
+    /* floating watch */
+    .hero::before{
+      content:"⌚";
+      font-size:80px;
+      position:absolute;
+      top:20px;
+      left:-100px;
+      opacity:0.15;
+      animation: floatWatch 6s linear infinite;
+    }
+
+    @keyframes floatWatch {
+      0% {left:-100px; transform:rotate(0deg);}
+      100% {left:110%; transform:rotate(360deg);}
     }
 
     .hero h1{
