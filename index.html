@@ -42,18 +42,18 @@
       background:#000;
     }
 
-    /* 🕒 SINGLE FAINT CLOCK BACKGROUND (NOT SECOND CLOCK) */
+    /* 🕒 BIG FAINT BACKGROUND CLOCK */
     .hero::before{
       content:"";
       position:absolute;
-      width:380px;
-      height:380px;
+      width:420px;
+      height:420px;
       border-radius:50%;
-      border:2px solid rgba(255,215,0,0.06);
-      box-shadow:0 0 80px rgba(255,215,0,0.03);
+      border:2px solid rgba(255,215,0,0.05);
+      box-shadow:0 0 100px rgba(255,215,0,0.03);
     }
 
-    /* ⏰ ONLY LIVE CLOCK */
+    /* ⏰ LIVE CLOCK */
     .clock{
       font-size:70px;
       font-weight:bold;
@@ -63,10 +63,49 @@
       z-index:2;
     }
 
-    .tag{
-      margin-top:10px;
-      color:#bbb;
-      z-index:2;
+    /* 🌟 FLOATING WATCH CARDS */
+    .float-container{
+      position:absolute;
+      width:100%;
+      height:100%;
+      pointer-events:none;
+    }
+
+    .watch{
+      position:absolute;
+      width:120px;
+      height:160px;
+      background:#1c1c1c;
+      border-radius:12px;
+      overflow:hidden;
+      box-shadow:0 10px 30px rgba(0,0,0,0.6);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .watch img{
+      width:100%;
+      height:120px;
+      object-fit:cover;
+    }
+
+    .watch p{
+      margin:0;
+      text-align:center;
+      font-size:12px;
+      padding:5px;
+      color:gold;
+    }
+
+    /* positions */
+    .w1{top:15%;left:10%; animation-delay:0s;}
+    .w2{top:65%;left:15%; animation-delay:1s;}
+    .w3{top:20%;right:12%; animation-delay:2s;}
+    .w4{top:60%;right:10%; animation-delay:3s;}
+
+    @keyframes float{
+      0%{transform:translateY(0px);}
+      50%{transform:translateY(-20px);}
+      100%{transform:translateY(0px);}
     }
 
   </style>
@@ -86,17 +125,36 @@
   </nav>
 </header>
 
-<!-- 🌟 HERO -->
 <div class="hero">
 
-  <!-- ONLY LIVE CLOCK -->
-  <div class="clock" id="clock">00:00:00</div>
+  <!-- floating watches -->
+  <div class="float-container">
+    <div class="watch w1">
+      <img src="lux1.jpg">
+      <p>Luxury</p>
+    </div>
 
-  <div class="tag">Luxury Time Display</div>
+    <div class="watch w2">
+      <img src="sport1.jpg">
+      <p>Sports</p>
+    </div>
+
+    <div class="watch w3">
+      <img src="fashion1.jpg">
+      <p>Fashion</p>
+    </div>
+
+    <div class="watch w4">
+      <img src="lux2.jpg">
+      <p>Premium</p>
+    </div>
+  </div>
+
+  <!-- clock -->
+  <div class="clock" id="clock">00:00:00</div>
 
 </div>
 
-<!-- ⏰ SCRIPT -->
 <script>
 function updateClock(){
   const now = new Date();
@@ -113,7 +171,7 @@ function updateClock(){
     h + ":" + m + ":" + s;
 }
 
-setInterval(updateClock, 1000);
+setInterval(updateClock,1000);
 updateClock();
 </script>
 
