@@ -32,9 +32,9 @@
     /* 🔥 HERO WITH ANIMATION */
     .hero{
       text-align:center;
-      padding:90px 15px;
+      padding:80px 15px;
       color:white;
-      background: linear-gradient(-45deg, #0a0a0a, #000, #1c1c1c, #000);
+      background: linear-gradient(-45deg, #111, #000, #1c1c1c, #000);
       background-size: 400% 400%;
       animation: bgMove 8s ease infinite;
       position: relative;
@@ -47,21 +47,19 @@
       100% {background-position:0% 50%;}
     }
 
-    /* 🔥 FLOATING REAL WATCH IMAGE */
+    /* floating watch */
     .hero::before{
-      content:"";
+      content:"⌚";
+      font-size:80px;
       position:absolute;
-      top:50%;
-      left:-150px;
-      width:120px;
-      height:120px;
-      background:url("watch.png") no-repeat center/contain;
-      opacity:0.25;
-      animation: floatWatch 7s linear infinite;
+      top:20px;
+      left:-100px;
+      opacity:0.15;
+      animation: floatWatch 6s linear infinite;
     }
 
     @keyframes floatWatch {
-      0% {left:-150px; transform:rotate(0deg);}
+      0% {left:-100px; transform:rotate(0deg);}
       100% {left:110%; transform:rotate(360deg);}
     }
 
